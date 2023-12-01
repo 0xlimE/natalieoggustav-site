@@ -1,0 +1,382 @@
+/* Reset some default padding and margin */
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url('/static/images/background.jpeg');
+    background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.front-image{
+    max-width:800px;
+}
+
+h1{
+    font-family: 'Calligraffitti';/* Adjusted for safety */
+    font-size: 40px;
+    text-align: center;
+}
+
+p.small{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 6;
+    line-height: 0.5;
+}
+
+.front-div {
+    text-align: center; /* Aligns the child elements to the center */
+    max-width: 800px;  /* Sets the maximum width of the div */
+    margin: 0 auto;  /* Centers the div horizontally */
+  }
+  
+  .front-image {
+    max-width: 100%;  /* Makes sure the image is not larger than the container */
+    height: auto;  /* Maintains aspect ratio */
+    margin: 0 auto;  /* Centers the image horizontally within the div */
+  }
+
+p.normal{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 8;
+    line-height: 1;
+    margin: 20px;
+}
+
+p.cursive{
+    font-family: cursive;
+    font-size: 10px;
+    line-height: 1;
+    background-color: rgb(255, 255, 255, 0.8); /* Optional: semi-transparent black background for better readability */
+    color: rgb(0, 0, 0);         /* White text color */
+    padding: 8px;        /* Some padding around the text */
+    border-radius: 3px; 
+}
+
+.header_text{
+    font-family: 'Alex Brush'; /* Adjusted for safety */
+    font-size: 10px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Mobile styles */
+@media only screen and (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+}
+
+/* Image styles */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;  /* Optional: rounded corners */
+}
+
+img.img-test{
+    margin: 30px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Shared styles for select and input[type="text"] */
+select, input[type="text"] {
+    padding: 10px;
+    width: calc(50% - 20px); /* 25% of container width minus padding */
+    border: none;
+    border-radius: 5px;
+    background-color: #f7bd7b;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+  }
+
+
+  /* Flex container */
+.filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  
+  /* Hover effects for shared styles */
+  select:hover, input[type="text"]:hover {
+    background-color: #f9c995; /* Slightly lighter shade for hover */
+  }
+  
+  /* Focus effects for shared styles */
+  select:focus, input[type="text"]:focus {
+    background-color: #f9c995;  /* Slightly lighter shade for focus */
+    outline: none;
+  } 
+
+
+/* Button styles */
+button, input[type="submit"] {
+    padding: 10px 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+    border: none;
+    border-radius: 100px;
+    border-width: 10px;
+    border-color: black;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #8ea70141;
+}
+
+/* Form styles */
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"], input[type="file"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Gallery styles */
+.galleri-item {
+    margin-bottom: 20px;
+}
+
+/* Adjust the styles as per your requirements */
+
+/* Input styling */
+.styled-input {
+    width: 100%; /* make it full width */
+    padding: 10px;
+    margin: 10px 0; /* add margin to top and bottom */
+    box-sizing: border-box; /* ensure padding and width work together */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px; /* larger font size for readability */
+}
+.styled-upload {
+    opacity: 0;
+    width: 100%;
+    height: 40px;
+    z-index: 2;
+  }
+  
+  .styled-label {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50; /* or your preferred color */
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 1;
+  }
+  
+  .styled-label::after {
+    content: "Upload File";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  
+  .styled-label {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #4CAF50; /* or your preferred color */
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 1;
+  }
+  
+  .styled-label::after {
+    content: "Upload File";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+
+body {
+    padding-top: 50px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.content-container {
+    max-width: 1200px;   /* Or whatever maximum width you prefer */
+    margin: 4 auto;     /* This will center the content */
+    padding: 40px;      /* This provides spacing inside the container */
+}
+
+.image-container {
+    position: relative;
+    width: 100%;        /* Set to 100% to occupy full width of its parent, this makes it responsive */
+    max-width: 800px;   /* Increased the max width for larger displays */
+    margin: 0 auto;     /* Center it horizontally */
+}
+
+/* Update overlay styles */
+.overlay-tag {
+    position: absolute;
+    bottom: 0.2px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100; /* This ensures that your header is above all other content */
+}
+  
+li {
+    float: left;
+}
+
+li a {
+    display: inline-block;
+    color: rgb(29, 29, 29);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: rgb(170, 170, 170);
+}
+
+.active {
+    background-color: #f7bd7b;
+}
+
+.header-image {
+    float: right;           /* Float the image to the right */
+    height: 40px;           /* Adjust the height as per your needs */
+    width: auto;            /* Maintain the image aspect ratio */
+    margin: 2px 10px;      /* Add some margin for spacing */
+}
+
+p.margin {
+    margin: 20px;
+  }
+
+/* Set the entry class to occupy full width */
+.entry {
+    width: 100%; 
+    float: left;       /* Using float to ensure it takes up the entire width */
+    padding: 5px;
+    box-sizing: border-box;  /* Ensures that padding doesn't affect the overall width */
+}
+/* On medium screens, maybe 2 entries per row */
+@media only screen and (max-width: 768px) {
+    .entry {
+        width: 50%;
+    }
+}
+
+/* On small screens, 1 entry per row */
+@media only screen and (max-width: 480px) {
+    .entry {
+        width: 100%;
+    }
+}
+
+.lozad {
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+.loaded {
+    opacity: 1;
+}
+
+/* How To Button Style */
+#howToBtn {
+    padding: 10px 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+    background-color: rgb(0, 0, 0);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#howToBtn:hover {
+    background-color: #555;
+}
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 9999; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.7); 
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    width: 60%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+

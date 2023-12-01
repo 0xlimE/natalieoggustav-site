@@ -1,0 +1,1299 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/styles.css">
+    <title>Galleri</title>
+    <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+    <style>
+        /* Inline styles for brevity, consider moving these to styles.css */
+        .filter-container {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Space between child elements */
+            flex-wrap: wrap; /* If items can't fit in a single line, they'll wrap onto the next line */
+        }
+
+        .styled-button {
+            padding: 5px 10px;
+            margin: 0; /* Remove any default margin */
+        }
+
+        #searchBar {
+            flex-grow: 1; /* Allow the search bar to take any available space */
+            margin: 0 0px; /* Add some margin to space out from dropdowns and button */
+        }
+
+    </style>
+ <script>
+    // Lazy load images with lozad
+    document.addEventListener("DOMContentLoaded", function() {
+    const observer = lozad('.lozad', {
+        loaded: function(el) {
+            el.classList.add('loaded');
+        }
+    });
+    observer.observe();
+
+      // Read the current URL
+      const urlParams = new URLSearchParams(window.location.search);
+      
+      // Set the initial state of the tag filter dropdown
+      const currentTag = urlParams.get('tag') || 'all';
+      document.getElementById("tagFilter").value = currentTag;
+
+      // Set the initial state of the sort order dropdown
+      const currentSort = urlParams.get('sort') || 'desc';
+      document.getElementById("sortOrder").value = currentSort;
+// Filter posts
+});
+    function filterByTag() {
+      var selectedTag = document.getElementById("tagFilter").value;
+      var entries = document.getElementsByClassName("entry");
+
+      for (let entry of entries) {
+        let tag = entry.getAttribute("data-tag");
+        if (selectedTag === "all" || tag === selectedTag) {
+          entry.style.display = "block";
+        } else {
+          entry.style.display = "none";
+        }
+      }
+    }
+
+    function sortBy() {
+      var sortOrder = document.getElementById("sortOrder").value;
+      window.location.href = "/galleri?sort=" + sortOrder + "&q=" + document.getElementById('searchBar').value;
+    } 
+
+  </script>
+
+
+</head>
+
+<body>
+
+    <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<div>
+    <ul>
+        <li>
+            <a class="" href="/">
+                <header_text> Home </header_text>
+            </a>
+        </li>
+        <li>
+            <a class="active" href="/galleri">
+                <header_text> Galleri</header_text>
+            </a>
+        </li>
+        <img src="/static/images/test.png" alt="Header Image" class="header-image">
+    </ul>
+  
+</div>
+
+    <h1>Galleri</h1>
+
+    <div class="filter-container">
+        <!-- Dropdown for tag selection -->
+        <select id="tagFilter" onchange="filterByTag()">
+            <option value="all">Alle tags</option>
+            <option value="bryllup">Bryllup</option>
+            <option value="venner">Venner</option>
+            <option value="familie">Familie</option>
+            <option value="fest">Fest</option>
+            <option value="hygge">Hygge</option>
+            <option value="ferie">Ferie</option>
+            <option value="andet">Andet</option>
+        </select>
+
+        <select id="sortOrder" onchange="sortBy()">
+            <option value="tag_asc">Tag (A-Z)</option>
+            <option value="name_asc">Navn (Fra) (A-Z)</option>
+        </select>
+
+        <!-- Search bar for names or tags -->
+        <input type="text" id="searchBar" placeholder="Søg på navn eller tag..." value="">
+        <input class="styled-button" type="submit" onclick="sortBy()" value="Search">
+    </div>
+
+    <br><br>
+
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/cba7b004a1834f5e8b179a0aad55e7df.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_cba7b004a1834f5e8b179a0aad55e7df.jpeg" alt="Birgitte ">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Birgitte </p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/1eb486572bad4f6f800dc66a3236c119.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_1eb486572bad4f6f800dc66a3236c119.jpeg" alt="Birgitte">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Birgitte</p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/98efb157c608450cabb70e5bf86f03b4.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_98efb157c608450cabb70e5bf86f03b4.jpeg" alt="Birgitte ">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Birgitte </p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/b569be1d149944f1b6484e28347091a8.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_b569be1d149944f1b6484e28347091a8.jpeg" alt="Birgitte ">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Birgitte </p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/4f02f6a1280d45f5a4c36e0423daa774.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_4f02f6a1280d45f5a4c36e0423daa774.jpeg" alt="Birgitte ">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Birgitte </p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/b8a4e74f3e5041b495f378c3a505c4df.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_b8a4e74f3e5041b495f378c3a505c4df.jpeg" alt="Birgitte ">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Birgitte </p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/66b18ea125804699b7ddc27bf888210d.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_66b18ea125804699b7ddc27bf888210d.jpeg" alt="Birgitte ">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Birgitte </p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/c0cabb765c4a49f1bf1958db06b666cf.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_c0cabb765c4a49f1bf1958db06b666cf.jpeg" alt="Birgitte ">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Birgitte </p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/2e35c39e151c4277adb2fc71ce27e12f.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_2e35c39e151c4277adb2fc71ce27e12f.jpeg" alt="Birgitte ">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Birgitte </p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/93dad258cd2e4dac98d9fb951cc97e1d.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_93dad258cd2e4dac98d9fb951cc97e1d.jpeg" alt="Birgitte ">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Birgitte </p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/2fa5bb1813bb4fe1aaac5711cd906ae7.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_2fa5bb1813bb4fe1aaac5711cd906ae7.jpeg" alt="Birgitte ">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Birgitte </p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/586fb2473b6b4b8bac399ba9f1a0dcc0.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_586fb2473b6b4b8bac399ba9f1a0dcc0.jpeg" alt="Birgitte ">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Birgitte </p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/ab7ccb2aca46498ab1ba72fcf4ef2b04.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_ab7ccb2aca46498ab1ba72fcf4ef2b04.jpeg" alt="Birgitte ">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Birgitte </p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/5e13ad84121d47e79948336b79fb048f.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_5e13ad84121d47e79948336b79fb048f.jpeg" alt="Birgitte ">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Birgitte </p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/ceddf0ca443947b9b13db8d7d906c19c.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_ceddf0ca443947b9b13db8d7d906c19c.jpeg" alt="Birgitte ">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Birgitte </p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/8beef75f4adc486a805a4adf746369b6.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_8beef75f4adc486a805a4adf746369b6.jpeg" alt="Birgitte">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Birgitte</p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/817f30993c78426091c3060f8cbdc90e.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_817f30993c78426091c3060f8cbdc90e.jpeg" alt="Birgitte">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Birgitte</p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/de76a8737555436589cab8e579ed98ac.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_de76a8737555436589cab8e579ed98ac.jpeg" alt="Birgitte ">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Birgitte </p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/0c6464977ded46faa5fd32359e88f646.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_0c6464977ded46faa5fd32359e88f646.jpeg" alt="Jörg">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jörg</p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/2ed4e3bc6ccd46b59c86d9fa1006f6db.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_2ed4e3bc6ccd46b59c86d9fa1006f6db.jpeg" alt="Jörg">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jörg</p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/8908c73ccb74452fa50471578d46039f.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_8908c73ccb74452fa50471578d46039f.jpeg" alt="Jörg">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jörg</p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/97df89dd2cbf408e90cc77209e92de9c.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_97df89dd2cbf408e90cc77209e92de9c.jpeg" alt="Jörg">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jörg</p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/32688530dd724a97af4e45c4da0e4e60.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_32688530dd724a97af4e45c4da0e4e60.jpeg" alt="Jörg">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jörg</p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/062280307c76462e859ed0ffc419fba2.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_062280307c76462e859ed0ffc419fba2.jpeg" alt="Jörg">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jörg</p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/61cf37ac522245329dd6e035970b1722.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_61cf37ac522245329dd6e035970b1722.jpeg" alt="Jörg">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jörg</p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/6e301e40252a4d43a8cad5d4ef8d3577.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_6e301e40252a4d43a8cad5d4ef8d3577.jpeg" alt="Jörg">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jörg</p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/8466d7b137074639a944f1745a43acf2.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_8466d7b137074639a944f1745a43acf2.jpeg" alt="Jörg">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jörg</p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/ce0f6af2a1914c9bad0228ff8a218701.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_ce0f6af2a1914c9bad0228ff8a218701.jpeg" alt="Jörg">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jörg</p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/6c22fe5377c540c4b844d1849ae0a9db.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_6c22fe5377c540c4b844d1849ae0a9db.jpeg" alt="Jörg">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jörg</p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/dcaaa19b4e2548b38407125ecab28943.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_dcaaa19b4e2548b38407125ecab28943.jpeg" alt="Jörg">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jörg</p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/13400b63583a4f03bb7e8a629bf7a737.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_13400b63583a4f03bb7e8a629bf7a737.jpeg" alt="Jörg">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jörg</p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/9bf0226939884af3be7ffaa0107680b1.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_9bf0226939884af3be7ffaa0107680b1.jpeg" alt="Jörg">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jörg</p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/028bd0a3e3894d33a871696d9a6dbeac.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_028bd0a3e3894d33a871696d9a6dbeac.jpeg" alt="Jörg">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jörg</p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/5271fff5ea2f4ab4ac6bbb8c694a029f.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_5271fff5ea2f4ab4ac6bbb8c694a029f.jpeg" alt="Jörg">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jörg</p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/86f9897108464e06b8699242a0624bda.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_86f9897108464e06b8699242a0624bda.jpeg" alt="U">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: U</p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/a8318ecbf3aa45308d21c1c7ad45c4dd.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_a8318ecbf3aa45308d21c1c7ad45c4dd.jpeg" alt="Jörg">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jörg</p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/d060283e356b4b13a7b471e85dcee5f4.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_d060283e356b4b13a7b471e85dcee5f4.jpeg" alt="Jörg">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jörg</p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/3ac2ba5926a64fa5a48d2fe076b31a75.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_3ac2ba5926a64fa5a48d2fe076b31a75.jpeg" alt="Jörg">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jörg</p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/9b1953270ce54733b032836cebbe9668.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_9b1953270ce54733b032836cebbe9668.jpeg" alt="Kat">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Kat</p>
+        <p class="cursive">G&amp;N </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/164dceb326774cd49f9628492ad53b3e.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_164dceb326774cd49f9628492ad53b3e.jpeg" alt="Katten">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Katten</p>
+        <p class="cursive">❤️ </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/5207b65251e8437a9a7b84a5e76c4ccc.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_5207b65251e8437a9a7b84a5e76c4ccc.jpeg" alt="Katten">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Katten</p>
+        <p class="cursive">❤️ </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/c56a075a3d004ad3a340e315f9f40f71.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_c56a075a3d004ad3a340e315f9f40f71.jpeg" alt="Katten">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Katten</p>
+        <p class="cursive">The Kennedys 🥹 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/093adc9afe7f4b628500be64d10649ed.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_093adc9afe7f4b628500be64d10649ed.jpeg" alt="Katten">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Katten</p>
+        <p class="cursive">Søde </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/eb5cac103ba447f6b09027b393b0c766.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_eb5cac103ba447f6b09027b393b0c766.jpeg" alt="Doriane">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Doriane</p>
+        <p class="cursive">😊 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/7117631d0f2b4c1298a7a659c050b87e.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_7117631d0f2b4c1298a7a659c050b87e.jpeg" alt="Doriane">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Doriane</p>
+        <p class="cursive">😊 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/666f2e8bf53b4a468c5b2b99475a9f21.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_666f2e8bf53b4a468c5b2b99475a9f21.jpeg" alt="Jesper">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jesper</p>
+        <p class="cursive">Til bords </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/fbcf3a9fb78a458fb16ed4864a07717d.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_fbcf3a9fb78a458fb16ed4864a07717d.jpeg" alt="Jesper ">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jesper </p>
+        <p class="cursive">Til bords  </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/adab13c24e85417d90edf76cff760b05.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_adab13c24e85417d90edf76cff760b05.jpeg" alt="Jesper ">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jesper </p>
+        <p class="cursive">Til bords  </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/2e591425e5034ca3ba92166fced41e12.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_2e591425e5034ca3ba92166fced41e12.jpeg" alt="Jesper ">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jesper </p>
+        <p class="cursive">Hygge </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/3bc8c2c3666a44c5b903e15c3949d682.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_3bc8c2c3666a44c5b903e15c3949d682.jpeg" alt="Jesper">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jesper</p>
+        <p class="cursive">Fest </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/da0a21ef981c41c5b0c4aa4a76cb6b0d.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_da0a21ef981c41c5b0c4aa4a76cb6b0d.jpeg" alt="Jesper ">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jesper </p>
+        <p class="cursive">Fest  </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/96d255f2815d4951bb4ea7d9e4ed672c.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_96d255f2815d4951bb4ea7d9e4ed672c.jpeg" alt="Jesper">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jesper</p>
+        <p class="cursive">French connection </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/d81795dde22341ea9b8def04d04d934f.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_d81795dde22341ea9b8def04d04d934f.jpeg" alt="Jesper">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jesper</p>
+        <p class="cursive">Bordet </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/9dee306aff654190a3c33a406365a178.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_9dee306aff654190a3c33a406365a178.jpeg" alt="Jesper ">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jesper </p>
+        <p class="cursive">Kirke </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/f325e3ac84fb44609e56af6e749415c4.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_f325e3ac84fb44609e56af6e749415c4.jpeg" alt="Søren">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Søren</p>
+        <p class="cursive">Skøn mad </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/8333f85f525a4b05a0fb3b875bc5a794.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_8333f85f525a4b05a0fb3b875bc5a794.jpeg" alt="Camilla Borchorst">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Camilla Borchorst</p>
+        <p class="cursive">Høj stemning på bord 7 😀 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/a31cc856f69d4325bbd58f76a0b8a8a3.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_a31cc856f69d4325bbd58f76a0b8a8a3.jpeg" alt="Doriane">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Doriane</p>
+        <p class="cursive">Bryllup  </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/736d3f70951a416fb345d3997909bd04.jpg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_736d3f70951a416fb345d3997909bd04.jpg" alt="sød">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: sød</p>
+        <p class="cursive">hmm </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/2843e091abc94a39931a456864bbeb0c.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_2843e091abc94a39931a456864bbeb0c.jpeg" alt="Isabella Riis Klempel">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Isabella Riis Klempel</p>
+        <p class="cursive">07/10 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/34d512d8c4654ac4bda6b3db09fe4550.jpg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_34d512d8c4654ac4bda6b3db09fe4550.jpg" alt="P">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: P</p>
+        <p class="cursive">Dessert tyve </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/38d08d784aaf44d68a835bc3569fa867.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_38d08d784aaf44d68a835bc3569fa867.jpeg" alt="Thomas">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Thomas</p>
+        <p class="cursive">Fie blevet iced af P </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/c86ad5cb6a2a4e39a34bf31f7a829656.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_c86ad5cb6a2a4e39a34bf31f7a829656.jpeg" alt="Isabella Riis Klempel">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Isabella Riis Klempel</p>
+        <p class="cursive">07/10 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/338a65ef51124094a07b5506f8a96948.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_338a65ef51124094a07b5506f8a96948.jpeg" alt="Isabella Riis Klempel">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Isabella Riis Klempel</p>
+        <p class="cursive">07/10 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/d4ecf5b1b53142e09f3a26120d8080d1.jpg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_d4ecf5b1b53142e09f3a26120d8080d1.jpg" alt="P">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: P</p>
+        <p class="cursive">Bord 4 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/097fb219d6244bcb8d24e820e8af8f13.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_097fb219d6244bcb8d24e820e8af8f13.jpeg" alt="Isabella Riis Klempel">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Isabella Riis Klempel</p>
+        <p class="cursive">07/10/22 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/f10f6161157c43d7b6af404c7d410caa.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_f10f6161157c43d7b6af404c7d410caa.jpeg" alt="Caroline ">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Caroline </p>
+        <p class="cursive">Fra et par mange år siden </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/d0407c3c0af446ae92f92a8ed574cd17.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_d0407c3c0af446ae92f92a8ed574cd17.jpeg" alt="Jens Christian Tvergaard">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jens Christian Tvergaard</p>
+        <p class="cursive">Skål i vand </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/2eda8f4122e44a1d8804637a89ba56e6.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_2eda8f4122e44a1d8804637a89ba56e6.jpeg" alt="anso">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: anso</p>
+        <p class="cursive">anso </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/5ee01c2c91124e5f88093ad9e610234c.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_5ee01c2c91124e5f88093ad9e610234c.jpeg" alt="Martin Riis">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Martin Riis</p>
+        <p class="cursive">Damstrup, nogle af dem… </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/b65d24146a65413c89f1e4a63ae96b63.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_b65d24146a65413c89f1e4a63ae96b63.jpeg" alt="Onkel">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Onkel</p>
+        <p class="cursive">Rørvig </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/7385d6ed1d134584b940f92cd4c924f3.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_7385d6ed1d134584b940f92cd4c924f3.jpeg" alt="Onkel">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Onkel</p>
+        <p class="cursive">Idag </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/bb8951a24cb241e7aae49ab909f6a8ed.jpg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_bb8951a24cb241e7aae49ab909f6a8ed.jpg" alt="Hervé ">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Hervé </p>
+        <p class="cursive">10/07/2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/af8366c6dc22476197b2e1427e3f475b.jpg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_af8366c6dc22476197b2e1427e3f475b.jpg" alt="Hervé ">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Hervé </p>
+        <p class="cursive">10/07/2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/c191137816814aa4a2e4d1a18718dd7d.jpg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_c191137816814aa4a2e4d1a18718dd7d.jpg" alt="Jens Christian Tvergaard">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jens Christian Tvergaard</p>
+        <p class="cursive">JC </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/d9c796d2838248c6ac15e1ae7686094a.jpg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_d9c796d2838248c6ac15e1ae7686094a.jpg" alt="Emil ">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Emil </p>
+        <p class="cursive">Der bliver trampet </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/fd4b4243009b4e19a850165580a9c4ae.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_fd4b4243009b4e19a850165580a9c4ae.jpeg" alt="BORD 2">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: BORD 2</p>
+        <p class="cursive">tror vi </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/50d79c4fa5a34cc5b753d303551540a6.jpg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_50d79c4fa5a34cc5b753d303551540a6.jpg" alt="Martin Riis">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Martin Riis</p>
+        <p class="cursive">Hilsen fra Lene </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="andet">
+        <div class="image-container">
+            <a href="/static/uploads/e6e1e72a9a2a4782a79f9459f04540e3.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_e6e1e72a9a2a4782a79f9459f04540e3.jpeg" alt="Camilla Borchorst">
+            </a>
+            <p class="overlay-tag"># andet</p>
+        </div>
+        <p class="small">Fra: Camilla Borchorst</p>
+        <p class="cursive">Idyllen over et slag kroket 😀 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/d8d1f19860834d379d3b83a2a3edf39a.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_d8d1f19860834d379d3b83a2a3edf39a.jpeg" alt="Jörg">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jörg</p>
+        <p class="cursive">7. Oktober </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/517d3451177c4991a6606f5d8647f020.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_517d3451177c4991a6606f5d8647f020.jpeg" alt="Jörg">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jörg</p>
+        <p class="cursive">7. Oktober </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/1f215adaa211400393a29ad63cfba219.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_1f215adaa211400393a29ad63cfba219.jpeg" alt="Camilla Borchorst">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Camilla Borchorst</p>
+        <p class="cursive">En spændt far på vejen til at hente bruden </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/8d274461db1e4e49aa8a0812d147220e.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_8d274461db1e4e49aa8a0812d147220e.jpeg" alt="Jörg">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jörg</p>
+        <p class="cursive">7. Oktober </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/afd07f8c4dea4f14a48d1244d1f936c3.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_afd07f8c4dea4f14a48d1244d1f936c3.jpeg" alt="Anso">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Anso</p>
+        <p class="cursive">Foran kirken </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/6c6d09cada714855b95d28053f3277c1.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_6c6d09cada714855b95d28053f3277c1.jpeg" alt="Anso">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Anso</p>
+        <p class="cursive">Velkommen! </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/0626c75771844372af0c338b9d972eb7.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_0626c75771844372af0c338b9d972eb7.jpeg" alt="Jörg">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Jörg</p>
+        <p class="cursive">7. Oktober 2023 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/62d917c6fd8f4ae18721390a7d0658fe.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_62d917c6fd8f4ae18721390a7d0658fe.jpeg" alt="Anso">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Anso</p>
+        <p class="cursive">Bryllupsbuket </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/a67033f55e9e487083e1b5a00446fe32.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_a67033f55e9e487083e1b5a00446fe32.jpeg" alt="Anso">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Anso</p>
+        <p class="cursive">Der steames kjole </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="familie">
+        <div class="image-container">
+            <a href="/static/uploads/7f6d7665ce584f878f13038cd8bd2b93.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_7f6d7665ce584f878f13038cd8bd2b93.jpeg" alt="Bettina">
+            </a>
+            <p class="overlay-tag"># familie</p>
+        </div>
+        <p class="small">Fra: Bettina</p>
+        <p class="cursive">Natalie på vej fra UK </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="andet">
+        <div class="image-container">
+            <a href="/static/uploads/1a30c211a5a24fc88496cc2056d456b2.png">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_1a30c211a5a24fc88496cc2056d456b2.png" alt="Mia ">
+            </a>
+            <p class="overlay-tag"># andet</p>
+        </div>
+        <p class="small">Fra: Mia </p>
+        <p class="cursive">Cuuuute 😍 </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+    <div class="entry" data-tag="bryllup">
+        <div class="image-container">
+            <a href="/static/uploads/aa77382b1ce34f5d85b6b5f55f7571c6.jpeg">
+                <img class="lozad gallery-image" data-src="/static/compressed/compressed_aa77382b1ce34f5d85b6b5f55f7571c6.jpeg" alt="Søren Damstrup">
+            </a>
+            <p class="overlay-tag"># bryllup</p>
+        </div>
+        <p class="small">Fra: Søren Damstrup</p>
+        <p class="cursive">Elsker mad </p>
+        <hr class="gallery-hr">
+        <br>
+    </div>
+    
+
+</body>
+
+</html>
